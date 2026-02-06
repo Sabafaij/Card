@@ -2,49 +2,60 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  padding: 40px;
-  background: #ffffff;
+  background: linear-gradient(135deg, #e0f2fe, #fdf2f8);
+  padding: 50px;
 }
 
 .main-title {
   text-align: center;
-  font-size: 40px;
-  margin-bottom: 30px;
+  font-size: 42px;
+  margin-bottom: 35px;
+  color: #0f172a;
 }
 
-/* BIG OUTER BOX */
+/* Outer box */
 .outer-box {
+  background: rgba(255,255,255,0.85);
   padding: 40px;
-  border-radius: 12px;
-  background: #f5f5f5;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border-radius: 22px;
+  box-shadow: 0 25px 45px rgba(0,0,0,0.2);
 }
 
-/* Cards container */
+/* Cards */
 .cards-container {
   display: flex;
+  gap: 30px;
   justify-content: center;
-  gap: 25px;
   flex-wrap: wrap;
 }
 
-/* Card */
 .card {
-  width: 260px;
-  background: #e0e0e0;
-  border-radius: 6px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;     /* IMPORTANT */
+  width: 270px;
+  background: white;
+  border-radius: 20px;
   overflow: hidden;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transition: transform 0.4s, box-shadow 0.4s;
 }
 
-/* Top logo */
+/* Hover animation */
+.card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 30px 55px rgba(0,0,0,0.35);
+}
+
+/* Active (clicked) */
+.card.active {
+  background: #ecfeff;
+}
+
+/* Top */
 .card-top {
   height: 150px;
   display: flex;
@@ -53,23 +64,31 @@ body {
 }
 
 .card-top img {
-  width: 80px;
+  width: 85px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating logo animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
 }
 
 /* Colors */
-.html { background: #38bdf8; }
-.css { background: #2563eb; }
-.js { background: #3b82f6; }
-.bootstrap { background: #6f42c1; }
+.html { background: linear-gradient(135deg, #ff9a3c, #ff3d00); }
+.css { background: linear-gradient(135deg, #38bdf8, #2563eb); }
+.js { background: linear-gradient(135deg, #facc15, #eab308); }
+.bootstrap { background: linear-gradient(135deg, #c084fc, #6d28d9); }
 
 /* Body */
 .card-body {
-  padding: 20px;
-  background: #d9d9d9;
+  padding: 22px;
+  text-align: center;
 }
 
 .card-body h3 {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .card-body p {
@@ -77,25 +96,30 @@ body {
   line-height: 1.6;
 }
 
-/* Button */
-.card button {
-  margin-top: auto;           /* KEY LINE */
-  background: red;
+.extra-text {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #334155;
+  display: none;
+}
+
+/* Learn more box */
+.learn-more {
+  margin-top: auto;
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
   color: white;
-  border: none;
-  padding: 12px;
-  font-size: 14px;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s, letter-spacing 0.3s;
 }
 
-.card button:hover {
-  background: darkred;
+.learn-more:hover {
+  letter-spacing: 1px;
 }
 
-/* Responsive */
-@media (max-width: 1100px) {
-  .cards-container {
-    flex-direction: column;
-    align-items: center;
-  }
+/* Show extra content */
+.card.active .extra-text {
+  display: block;
 }
